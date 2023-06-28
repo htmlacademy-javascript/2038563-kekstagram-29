@@ -4,3 +4,7 @@ import {renderThumbnails} from './thumbnail.js'
 
 renderThumbnails(getPhotos(PHOTOS));
 
+
+
+
+
