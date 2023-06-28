@@ -1,5 +1,6 @@
 import {getPhotos} from './data.js';
 import {PHOTOS} from './constants.js';
+import {renderThumbnail} from './thumbnail.js';
 
-console.log(getPhotos(PHOTOS));
+renderThumbnail(getPhotos(PHOTOS));
 
