@@ -27,6 +27,8 @@ const COMMENTS = 500;
 const MIN_AVATAR = 1;
 const MAX_AVATAR = 100;
 
+const COMMENTS_DOSE = 5;
+
 const NAMES = [
   'Виктория',
   'Иван',
@@ -47,4 +49,5 @@ COMMENTS,
 MIN_AVATAR,
 MAX_AVATAR,
 NAMES,
+COMMENTS_DOSE,
 };
