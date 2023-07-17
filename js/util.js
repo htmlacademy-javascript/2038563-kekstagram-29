@@ -28,4 +28,11 @@ const createRandomIdFromRangeGenerator = (min, max) => {
 };
 //--------------------------------------------
 
-export {isEscapeKey,createRandomIdFromRangeGenerator,getRandomInteger};
+const checkString = (str, limit) => str.length <= limit;
+
+export {
+  isEscapeKey,
+  createRandomIdFromRangeGenerator,
+  getRandomInteger,
+  checkString
+};

@@ -62,19 +62,20 @@ const renderCommentsInBIgPhoto = () => {
 
 
 const openBigPhoto = (elem) => {
+  document.body.classList.add('modal-open');//удаляем второй скролл
   commentsVolume = elem.comments.length;
   commentContainerInBIgPhoto.innerHTML = '';//чистим контейнер перед тем как вставить в него фрагмент
   bigPhoto.classList.remove('hidden');
   imageInBigPhoto.src = elem.url;
   likesInBigPhoto.textContent = elem.likes;
-  titleInBigPhoto.textContent =  elem.description;
+  titleInBigPhoto.textContent = elem.description;
 
 
   commentsList.length = 0; //обнулили массив
   commentsList.push(...elem.comments.slice());
 
   renderCommentsInBIgPhoto(elem.comments);
-
+  document.addEventListener('keydown', onClickOutside);
   document.addEventListener('keydown', onClickEsc);
 };
 
@@ -89,8 +90,10 @@ commentsLoader.addEventListener('click', (evt) => {
 //---------------------------------------------------
 
 const closeBigPhoto = () => {
+  document.body.classList.remove('modal-open');
   bigPhoto.classList.add('hidden');
   document.removeEventListener('keydown', onClickEsc);
+  document.removeEventListener('keydown', onClickOutside);
 };
 
 
@@ -105,6 +108,7 @@ buttonCloseBigPhoto.addEventListener('click', (evt) => {
     closeBigPhoto();
   }
 });
+----вариант  из ретро-------
 */
 
 function onClickEsc (evt) {
@@ -113,7 +117,13 @@ function onClickEsc (evt) {
   }
 };
 
-export {openBigPhoto}
+function onClickOutside (evt) {
+  if (evt.target.classList.contains('overlay')){
+  closeBigPhoto();
+  }
+};
+
+export {openBigPhoto, onClickEsc, onClickOutside}
 
 
 
