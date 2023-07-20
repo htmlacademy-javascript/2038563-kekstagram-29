@@ -18,14 +18,18 @@ const MESSAGE= [
   'прекрасно',
   'неплохо',
   'полное г***о',
-  'что за шляпа?',
+  'ВАУУУУУУУУ!',
   'милота какая))',
+  'ну я так тоже могу!',
+  'ну такое',
+  'при чем тут Вася?',
+  'у меня в подвале не хуже есть'
 ];
 
 const COMMENTS = 500;
 
 const MIN_AVATAR = 1;
-const MAX_AVATAR = 100;
+const MAX_AVATAR = 6;
 
 const COMMENTS_DOSE = 5;
 
@@ -42,9 +46,9 @@ const MAX_HASHTAGS_VOLUME =5;
 const HASHTAG_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 
-
-
-
+const SCALE_STEP = 25;
+const MAX_SCALE = 100;
+const MIN_SCALE = 25;
 export {
 PHOTOS,
 MIN_LIKES,
@@ -60,5 +64,8 @@ NAMES,
 COMMENTS_DOSE,
 MAX_DESCRIPTION_LENGHT,
 MAX_HASHTAGS_VOLUME,
-HASHTAG_SYMBOLS
+HASHTAG_SYMBOLS,
+SCALE_STEP,
+MIN_SCALE,
+MAX_SCALE
 };

@@ -32,18 +32,18 @@ pristine.addValidator(
   true
   );
 
-const validateHashtagVolume = (vol) => getTagsArray(vol).lenght <= MAX_HASHTAGS_VOLUME;//преобразовали строку
+const validateHashtagVolume = (vol) => getTagsArray(vol).length <= MAX_HASHTAGS_VOLUME;//преобразовали строку
 pristine.addValidator(
   hashtagsField,//поле тестим
   validateHashtagVolume,//содержание
-  `КОлличество  хештегов не должно превышать ${MAX_HASHTAGS_VOLUME}`,
+  `Колличество  хештегов не должно превышать ${MAX_HASHTAGS_VOLUME}`,
   1,//пропускаем этот параметр
   true
 );
 
 const validateHashtag = (vol) => {
   const tags = vol.replace(/ +/g,' ').trim().split(' ');
-  return !tags.some((el) => !HASHTAG_SYMBOLS.test(el));
+  return !value.lenght ? true : !tags.some((el) => !HASHTAG_SYMBOLS.test(el));
 };
 pristine.addValidator(
   hashtagsField,//поле тестим

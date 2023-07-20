@@ -1,5 +1,7 @@
-import { isEscapeKey } from "./util.js";
-import {validateForm} from "./validation-form.js";
+import { isEscapeKey } from './util.js';
+import {validateForm} from './validation-form.js';
+import {resetScale} from './scale.js';
+import { resetEffects } from './effects.js';
 
 const uploadPhoto = document.querySelector('.img-upload__input');
 const uploadModalWindow = document.querySelector('.img-upload__overlay');
@@ -20,6 +22,8 @@ const showModalWindow = () => {
   uploadModalWindow.classList.remove('hidden');
   document.body.classList.add('modal-open');
   renderPreviewImage();
+  resetScale();
+  resetEffects();
 };
 
 const closeModalWindow = () => {
