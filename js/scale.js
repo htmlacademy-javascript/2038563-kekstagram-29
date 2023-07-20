@@ -11,6 +11,8 @@ const previewLoadingImage = document.querySelector('.img-upload__preview img');
 
 let scale;
 
+
+
 const onMinusClick = () => {
   scale  = scale - SCALE_STEP >= MIN_SCALE ?
   scale - SCALE_STEP : MIN_SCALE;
