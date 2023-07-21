@@ -435,7 +435,10 @@ main {
   border: 0;
 }
 
-.scale__control:hover,
+.scale__control:hover{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .scale__control:focus {
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -448,6 +451,10 @@ main {
 
 .scale__control--smaller {
   border-radius: 50% 0 0 50%;
+}
+
+.scale__control--smaller:disabled {
+  background-color: rgba(247, 242, 242, 1);
 }
 
 .scale__control--smaller::before {
@@ -477,6 +484,9 @@ main {
 
 .scale__control--bigger {
   border-radius: 0 50% 50% 0;
+}
+.scale__control--bigger:disabled {
+  background-color: rgba(247, 242, 242, 1);
 }
 
 .scale__control--bigger::before {

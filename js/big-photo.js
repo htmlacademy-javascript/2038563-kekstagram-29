@@ -7,14 +7,14 @@ const buttonCloseBigPhoto = document.querySelector('.big-picture__cancel');
 
 const imageInBigPhoto = bigPhoto.querySelector('.big-picture__img img');
 const likesInBigPhoto = bigPhoto.querySelector('.social__likes');
-const titleInBigPhoto = bigPhoto.querySelector('social__caption');
-const commentsInBigPhoto = bigPhoto.querySelector('comments-count');
+const titleInBigPhoto = bigPhoto.querySelector('.social__caption');
+const commentsInBigPhoto = bigPhoto.querySelector('.comments-count');
 
-const commentItemInBIgPhoto = bigPhoto.querySelector('social__comment');
-const commentContainerInBIgPhoto = bigPhoto.querySelector('social__comments');
+const commentItemInBIgPhoto = bigPhoto.querySelector('.social__comment');
+const commentContainerInBIgPhoto = bigPhoto.querySelector('.social__comments');
 
 //for more-comments module
-const commentsInBigPhotoCount = bigPhoto.querySelector('social__comment-count');
+const commentsInBigPhotoCount = bigPhoto.querySelector('.social__comment-count');
 
 const commentsLoader = bigPhoto.querySelector('.social__comments-loader');
 
