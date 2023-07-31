@@ -1,7 +1,7 @@
 import { isEscapeKey } from "./util.js";
 import { COMMENTS_DOSE } from "./constants.js";
 
-const photoContainer =  document.querySelector('.pictures');
+const outsideBigPicture = document.querySelector('.overlay');
 const bigPhoto = document.querySelector('.big-picture');
 const buttonCloseBigPhoto = document.querySelector('.big-picture__cancel');
 
@@ -24,10 +24,10 @@ let commentsVolume = 0;
 
 const renderButtonLoader = () => {
   if (!commentsList.length ) {
-    commentsLoader.classList.add('hidden')
+    commentsLoader.classList.add('hidden');
   }
   else {
-    commentsLoader.classList.remove('hidden')
+    commentsLoader.classList.remove('hidden');
   }
 };
 
@@ -97,19 +97,10 @@ const closeBigPhoto = () => {
 };
 
 
-
 buttonCloseBigPhoto.addEventListener('click', (evt) => {
   closeBigPhoto();
 });
 
-/*document.addEventListener('keydown',  (evt) =>{
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    closeBigPhoto();
-  }
-});
-----вариант  из ретро-------
-*/
 
 function onClickEsc (evt) {
   if (isEscapeKey) {
@@ -123,7 +114,7 @@ function onClickOutside (evt) {
   }
 };
 
-export {openBigPhoto, onClickEsc, onClickOutside}
+export {openBigPhoto, onClickEsc, onClickOutside};
 
 
 

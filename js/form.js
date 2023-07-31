@@ -4,6 +4,7 @@ import {resetScale} from './scale.js';
 import { resetEffects } from './effects.js';
 import {postPhoto} from './api.js';
 import { showPopupSuccess, showPopupError } from './popup.js';
+import {SubmitButtonText} from './constants.js';
 
 const uploadPhoto = document.querySelector('.img-upload__input');
 const uploadModalWindow = document.querySelector('.img-upload__overlay');
@@ -11,6 +12,7 @@ const buttonUploadCancel = document.querySelector('.img-upload__cancel');
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadModalImg = document.querySelector('.img-upload__preview img');
 const uploadModalEffectsPreviewItems = document.querySelectorAll('.effects__preview');
+const uploadSubmit = document.querySelector('.img-upload__submit');
 
 const renderPreviewImage = () => {
   const fileImage = uploadPhoto.files[0];// возмемься за файл, который выбрал пользователь
@@ -51,33 +53,41 @@ buttonUploadCancel.addEventListener('click', () => {
 
 //---------------библиотека
  //1 отправка данных на сервер
+const disableSubmitButton = (isDisable = true) => {
+  uploadSubmit.textContent = isDisable ? SubmitButtonText.SENDING : SubmitButtonText.IDLE;
+  uploadSubmit.disabled = isDisable;
+};
+
+
 uploadForm.addEventListener ('submit', (evt) => {
   evt.preventDefault();
   if (validateForm()) {
-    evt.preventDefault();
-    postPhoto(new FormData(evt.target)).then((response) => {
+    disableSubmitButton();
+    postPhoto(new FormData(evt.target))
+    .then((response) => {
       if (response.ok) {
         showPopupSuccess();
        closeModalWindow();
+
        } else {
         showPopupError();
-        document.removeEventListener('keydown', onClickPopupEsc);
+        //document.removeEventListener('keydown', onClickPopupEsc);
       }
 
     })
-    .cath (() => {
+    .catch (() => {
       showPopupError();
-    });
+      //document.removeEventListener('keydown', onClickPopupEsc);
+    })
     .finally(() => {
-      enableSubmitButton();
+      disableSubmitButton(false);
     })
   }
 });
 
 function onClickEsc (evt) {
   const isFocusedInput = evt.target.classList.contains('text__hashtags') || evt.target.classList.contains('text__description');
-  if (isFocusedInput) {
-    return false;
+  if (isFocusedInput) { return false;
   }
   if (isEscapeKey) {
     closeModalWindow();
@@ -85,7 +95,9 @@ function onClickEsc (evt) {
 };
 
 function onClickOutside (evt) {
-  if (evt.target.classList.contains('overlay')){
+  if (evt.target.classList.contains('img-upload__overlay')){
     closeModalWindow();
   }
 };
+
+export {onClickEsc}

@@ -1,4 +1,4 @@
-import { renderThumbnails } from "./thumbnail";
+import { renderThumbnails } from "./thumbnail.js";
 import { RANDOM_PHOTOS_VALUE,
   RENDER_DELAY} from './constants.js';
 import {debounce} from './util.js'
@@ -31,7 +31,7 @@ const setFilters = (photos) => {
       renderThumbnails(filterPhotos(id, photos));
       setFilterButton(evt.target);
     }
-  },RENDER_DELAY))
+  },RENDER_DELAY));
 };
 
-export {setFilters}
+export {setFilters};

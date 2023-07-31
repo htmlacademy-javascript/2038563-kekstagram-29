@@ -25,8 +25,5 @@ const postPhoto = (body) =>
 
 
 
-
-
-
 export {postPhoto,
-  getPhotos}
+  getPhotos};

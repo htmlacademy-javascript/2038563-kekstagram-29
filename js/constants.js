@@ -23,7 +23,7 @@ const SCALE_STEP = 25;
 const MAX_SCALE = 100;
 const MIN_SCALE = 25;
 
-const POST_DATA_URL = 'https://28.javascript.pages.academy/kekstagram';
+const POST_DATA_URL = 'https://28.javascript.pages.academy/kekstagram1';
 const GET_DATA_URL = 'https://28.javascript.pages.academy/kekstagram/data';
 
 const ALERT_MESSAGE = 'Что-то пошло не так..!!!'
@@ -33,6 +33,11 @@ const ALERT_SHOW_TIME = 5000;
 const  RANDOM_PHOTOS_VALUE = 10;
 
 const RENDER_DELAY = 500;
+
+const SubmitButtonText = {
+  IDLE: 'Опубликовать',
+  SENDING: 'Публикую...',
+};
 
 export {
 PHOTOS,
@@ -56,5 +61,6 @@ ALERT_MESSAGE,
 ALERT_SHOW_TIME,
 ALERT_MESSAGE_CATCH,
 RANDOM_PHOTOS_VALUE,
-RENDER_DELAY
+RENDER_DELAY,
+SubmitButtonText
 };
