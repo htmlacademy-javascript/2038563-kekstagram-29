@@ -2,14 +2,11 @@ import {
 PHOTOS,
 MIN_LIKES,
 MAX_LIKES,
-DESCRIPTIONS,
 MIN_COMMENTS,
 MAX_COMMENTS,
-MESSAGE,
 COMMENTS,
 MIN_AVATAR,
-MAX_AVATAR,
-NAMES,
+MAX_AVATAR
 } from './constants.js';
 import {createRandomIdFromRangeGenerator,getRandomInteger} from './util.js'
 

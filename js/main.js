@@ -1,8 +1,11 @@
-import {getPhotos} from './data.js';
-import {PHOTOS} from './constants.js';
+import {getPhotos} from './api.js';
 import {renderThumbnails} from './thumbnail.js';
 import './form.js';
-import './scale.js';
+import { setFilters } from './filter.js';
 
-renderThumbnails(getPhotos(PHOTOS));
+getPhotos().then((photos) => {
+  //renderThumbnails(photos);//запускается после фильтров уже
+  setFilters(photos);//показать *перламутровые пуговицы* фильтрация фото
+});
+
 

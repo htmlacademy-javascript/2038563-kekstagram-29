@@ -1,5 +1,5 @@
 import {checkString} from "./util.js";
-import { MAX_DESCRIPTION_LENGHT,
+import { MAX_DESCRIPTION_LENGTH,
   MAX_HASHTAGS_VOLUME,
   HASHTAG_SYMBOLS
  } from "./constants.js";
@@ -22,12 +22,12 @@ const pristine = new Pristine(
   false
 );
 const getTagsArray = (vol) => vol.replace(/ +/g,' ').trim().toLowerCase().split(' ');
-const validateDescription = (vol) => checkString(vol,MAX_DESCRIPTION_LENGHT);
+const validateDescription = (vol) => checkString(vol,MAX_DESCRIPTION_LENGTH);
 
 pristine.addValidator(
   descriptionField,
   validateDescription,
-  `Длина строки не должна превышать ${MAX_DESCRIPTION_LENGHT} символов`,
+  `Длина строки не должна превышать ${MAX_DESCRIPTION_LENGTH} символов`,
   1,//пропускаем этот параметр
   true
   );
@@ -41,9 +41,9 @@ pristine.addValidator(
   true
 );
 
-const validateHashtag = (vol) => {
-  const tags = vol.replace(/ +/g,' ').trim().split(' ');
-  return !value.lenght ? true : !tags.some((el) => !HASHTAG_SYMBOLS.test(el));
+const validateHashtag = (value) => {
+  const tags = value.replace(/ +/g,' ').trim().split(' ');
+  return !value.length ? true : !tags.some((el) => !HASHTAG_SYMBOLS.test(el));
 };
 pristine.addValidator(
   hashtagsField,//поле тестим
@@ -55,10 +55,12 @@ pristine.addValidator(
   1,//пропускаем этот параметр
   true
 );
+
 const validateUniqueHashtag = (vol) => {
   const tags = getTagsArray(vol);
+  console.log(tags);
   const getUniqTags = [...new Set(tags)];
-  return tags.length === getUniqTags.lenght;
+  return tags.length === getUniqTags.length;
 };
 pristine.addValidator(
   hashtagsField,//поле тестим
@@ -67,6 +69,7 @@ pristine.addValidator(
   1,//пропускаем этот параметр
   true
 );
+
 const validateForm = () => pristine.validate(); //запускает все валидаторы (он тут у нас один .addValidator)
 
 export {validateForm};

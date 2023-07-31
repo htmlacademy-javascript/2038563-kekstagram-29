@@ -1,9 +1,9 @@
-const sliderElement = document.querySelector('.effects-level__slider');
+const sliderElement = document.querySelector('.effect-level__slider');
 const radioList = document.querySelector('.effects__list');
 const valueElement =  document.querySelector('.effect-level__value');
 const image = document.querySelector('.img-upload__preview img');
 const sliderBlock = document.querySelector('.img-upload__effect-level');
-const originalRadio = document.querySelector('.effect-none');
+const originalRadio = document.querySelector('#effect-none');
 
 
 
@@ -15,7 +15,6 @@ noUiSlider.create(sliderElement, {
   start: 80,
   connect: 'lower'
 });
-
 
 const updateSliderOption = (effect) => {
   switch (effect) {
@@ -70,7 +69,6 @@ const updateSliderOption = (effect) => {
       });
       break;
   }
-  image.style.filter = filterStyle;
 };
 
 const renderEffect = (effect) => {
@@ -95,33 +93,29 @@ const renderEffect = (effect) => {
   image.style.filter = filterStyle;
 };
 
-
-sliderElement.noUiSlider.on('update',  () => {
-  valueElement.value = liderElement.noUiSlider.get()//синхронизируем значения
-  console.log(valueElement.value);
+sliderElement.noUiSlider.on('update', () =>{
+  valueElement.value = sliderElement.noUiSlider.get();
   renderEffect(document.querySelector('.effects__radio:checked').value);
 });
 
-
-
-radioList.addEventListener('change', (evt) => {
+radioList.addEventListener('change',  (evt) => {
+  console.log(evt.target);
   if (evt.target.name === 'effect') {
-   if (evt.target.valuee === none) {
-    sliderBlock.classList.add ('hidden');
-    image.style.filter = '';
-   } else {
-    renderEffect(evt.target.value);
-    sliderBlock.classList.remove('hidden');
-    updateSliderOption(evt.currentTarget.value);
-  }
+    if(evt.target.value === 'none'){
+      sliderBlock.classList.add('hidden');
+      image.style.filter = '';
+    } else {
+      updateSliderOption (evt.target.value);
+      renderEffect(evt.currentTarget.value);
+      sliderBlock.classList.remove('hidden');
+    }
   }
 });
 
-const resetEffects = () => {
+const resetEffects = () =>  {
   sliderBlock.classList.add('hidden');
   image.style.filter = '';
   originalRadio.checked = true;
 };
 
-
-export {resetEffects};
+export { resetEffects};

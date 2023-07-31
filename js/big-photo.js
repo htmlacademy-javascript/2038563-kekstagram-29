@@ -112,7 +112,7 @@ buttonCloseBigPhoto.addEventListener('click', (evt) => {
 */
 
 function onClickEsc (evt) {
-  if (evt.key === 'Escape') {
+  if (isEscapeKey) {
     closeBigPhoto();
   }
 };

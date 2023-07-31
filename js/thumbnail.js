@@ -5,13 +5,17 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 const pictureContainer = document.querySelector('.pictures');
 const pictureFragment = document.createDocumentFragment();
 
+const clearContainer = () => {
+  document.querySelectorAll('.picture').forEach((el) => {el.remove()});
+};
+
 const renderThumbnails = (pictures) => {
-  pictures.forEach((element) => { 
-    console.log(element);
+ clearContainer();
+  pictures.forEach((element) => {
+
     const pictureElement = pictureTemplate.cloneNode(true);
 
     pictureElement.dataset.id = element.id;//возможность связать по айдишнику данные одной конкретн карточки
-
     pictureElement.querySelector('.picture__img').src = element.url;
     pictureElement.querySelector('.picture__img').alt = element.description;
     pictureElement.querySelector('.picture__comments').textContent = element.comments.length;
