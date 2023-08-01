@@ -3,7 +3,7 @@ import './form.js';
 import { setFilters } from './filter.js';
 
 getPhotos().then((photos) => {
-  setFilters(photos);//показать *перламутровые пуговицы* фильтрация фото
+  setFilters(photos);
 });
 
 

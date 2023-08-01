@@ -1,43 +1,34 @@
-import { isEscapeKey } from "./util.js";
-import { COMMENTS_DOSE } from "./constants.js";
+import { isEscapeKey } from './util.js';
+import { COMMENTS_DOSE } from './constants.js';
 
-const outsideBigPicture = document.querySelector('.overlay');
 const bigPhoto = document.querySelector('.big-picture');
 const buttonCloseBigPhoto = document.querySelector('.big-picture__cancel');
 
 const imageInBigPhoto = bigPhoto.querySelector('.big-picture__img img');
 const likesInBigPhoto = bigPhoto.querySelector('.social__likes');
 const titleInBigPhoto = bigPhoto.querySelector('.social__caption');
-const commentsInBigPhoto = bigPhoto.querySelector('.comments-count');
 
 const commentItemInBIgPhoto = bigPhoto.querySelector('.social__comment');
 const commentContainerInBIgPhoto = bigPhoto.querySelector('.social__comments');
 
-//for more-comments module
 const commentsInBigPhotoCount = bigPhoto.querySelector('.social__comment-count');
 
 const commentsLoader = bigPhoto.querySelector('.social__comments-loader');
 
-
-const commentsList =[];
+const commentsList = [];
 let commentsVolume = 0;
 
 const renderButtonLoader = () => {
-  if (!commentsList.length ) {
+  if (!commentsList.length) {
     commentsLoader.classList.add('hidden');
-  }
-  else {
+  } else {
     commentsLoader.classList.remove('hidden');
   }
 };
 
-
-
 const renderStatistic = () => {
-  commentsInBigPhotoCount.innerHTML = `${commentsVolume - commentsList.length} из <span class="comments-count">${commentsVolume}</span> комментариев`
+  commentsInBigPhotoCount.innerHTML = `${commentsVolume - commentsList.length} из <span class="comments-count">${commentsVolume}</span> комментариев`;
 };
-//----------------------------------------
-
 
 const renderOneComment = (item) => {
   const commentElement = commentItemInBIgPhoto.cloneNode(true);
@@ -47,31 +38,27 @@ const renderOneComment = (item) => {
   return commentElement;
 };
 
-
-
 const renderCommentsInBIgPhoto = () => {
   const fragment = document.createDocumentFragment();
   commentsList.splice(0, COMMENTS_DOSE).forEach((e) => {
-   fragment.append(renderOneComment(e));
+    fragment.append(renderOneComment(e));
   });
 
-  commentContainerInBIgPhoto.append(fragment);//вставляем строку эту аппендом
+  commentContainerInBIgPhoto.append(fragment);
   renderButtonLoader();
   renderStatistic ();
 };
 
-
 const openBigPhoto = (elem) => {
-  document.body.classList.add('modal-open');//удаляем второй скролл
+  document.body.classList.add('modal-open');
   commentsVolume = elem.comments.length;
-  commentContainerInBIgPhoto.innerHTML = '';//чистим контейнер перед тем как вставить в него фрагмент
+  commentContainerInBIgPhoto.innerHTML = '';
   bigPhoto.classList.remove('hidden');
   imageInBigPhoto.src = elem.url;
   likesInBigPhoto.textContent = elem.likes;
   titleInBigPhoto.textContent = elem.description;
 
-
-  commentsList.length = 0; //обнулили массив
+  commentsList.length = 0;
   commentsList.push(...elem.comments.slice());
 
   renderCommentsInBIgPhoto(elem.comments);
@@ -79,15 +66,10 @@ const openBigPhoto = (elem) => {
   document.addEventListener('keydown', onClickEsc);
 };
 
-//for more-comments
-
 commentsLoader.addEventListener('click', (evt) => {
   evt.preventDefault();
-
   renderCommentsInBIgPhoto();
 });
-
-//---------------------------------------------------
 
 const closeBigPhoto = () => {
   document.body.classList.remove('modal-open');
@@ -96,27 +78,22 @@ const closeBigPhoto = () => {
   document.removeEventListener('keydown', onClickOutside);
 };
 
-
-buttonCloseBigPhoto.addEventListener('click', (evt) => {
+buttonCloseBigPhoto.addEventListener('click', () => {
   closeBigPhoto();
 });
 
-
-function onClickEsc (evt) {
+function onClickEsc () {
   if (isEscapeKey) {
     closeBigPhoto();
   }
-};
+}
 
 function onClickOutside (evt) {
   if (evt.target.classList.contains('overlay')){
-  closeBigPhoto();
+    closeBigPhoto();
   }
-};
+}
 
 export {openBigPhoto, onClickEsc, onClickOutside};
-
-
-
 
 

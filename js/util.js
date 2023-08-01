@@ -1,10 +1,7 @@
-export {ALERT_SHOW_TIME} from './constants.js'
+import {ALERT_SHOW_TIME} from './constants.js';
 
-const isEscapeKey = (evt) => {
-  return evt.key === 'Escape';
-};
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
-// генерация случайного числа с повторами
 const getRandomInteger = (min, max) => {
   const lower = Math.ceil(Math.min(min, max));
   const upper = Math.floor(Math.max(min, max));
@@ -12,7 +9,6 @@ const getRandomInteger = (min, max) => {
   return Math.floor(result);
 };
 
-// генерация случайного числа с контролем (без) повторений
 const createRandomIdFromRangeGenerator = (min, max) => {
   const previousValues = [];
 
@@ -28,7 +24,7 @@ const createRandomIdFromRangeGenerator = (min, max) => {
     return currentValue;
   };
 };
-//--------------------------------------------
+
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = '100';
@@ -40,25 +36,21 @@ const showAlert = (message) => {
   alertContainer.style.fontSize = '20px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-
   alertContainer.textContent = message;
 
   document.body.append(alertContainer);
-  setTimeout(( ) => {
+  setTimeout(() => {
     alertContainer.remove();
-  }, ALERT_SHOW_TIME)
+  },ALERT_SHOW_TIME);
 };
 
-//------------------------------многократное нажатие кнопки убираем 'дребезг"
-
-const debounce =  (callback, timeoutDelay = 500) => {
+const debounce = (callback, timeoutDelay = 500) => {
   let timeoutId;
-
   return (...rest) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
-}
+};
 
 const checkString = (str, limit) => str.length <= limit;
 

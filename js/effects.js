@@ -1,10 +1,11 @@
+
+
 const sliderElement = document.querySelector('.effect-level__slider');
 const radioList = document.querySelector('.effects__list');
-const valueElement =  document.querySelector('.effect-level__value');
+const valueElement = document.querySelector('.effect-level__value');
 const image = document.querySelector('.img-upload__preview img');
 const sliderBlock = document.querySelector('.img-upload__effect-level');
 const originalRadio = document.querySelector('#effect-none');
-
 
 
 noUiSlider.create(sliderElement, {
@@ -98,8 +99,7 @@ sliderElement.noUiSlider.on('update', () =>{
   renderEffect(document.querySelector('.effects__radio:checked').value);
 });
 
-radioList.addEventListener('change',  (evt) => {
-  console.log(evt.target);
+radioList.addEventListener('change', (evt) => {
   if (evt.target.name === 'effect') {
     if(evt.target.value === 'none'){
       sliderBlock.classList.add('hidden');
@@ -112,10 +112,10 @@ radioList.addEventListener('change',  (evt) => {
   }
 });
 
-const resetEffects = () =>  {
+const resetEffects = () => {
   sliderBlock.classList.add('hidden');
   image.style.filter = '';
   originalRadio.checked = true;
 };
 
-export { resetEffects};
+export {resetEffects};
