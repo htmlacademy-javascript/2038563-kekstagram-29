@@ -1,8 +1,9 @@
-import {getPhotos} from './data.js';
-import {PHOTOS} from './constants.js';
-import {renderThumbnails} from './thumbnail.js';
+import {getPhotos} from './api.js';
 import './form.js';
-import './scale.js';
+import { setFilters } from './filter.js';
 
-renderThumbnails(getPhotos(PHOTOS));
+getPhotos().then((photos) => {
+  setFilters(photos);
+});
+
 
