@@ -19,6 +19,49 @@ const RANDOM_PHOTOS_VALUE = 10;
 
 const RENDER_DELAY = 500;
 
+const EffectsOptions = {
+  CROME: {
+    range: {
+      min: 0,
+      max: 1,
+    },
+    start: 1,
+    step: 0.1,
+  },
+  SEPIA: {
+    range: {
+      min: 0,
+      max: 1,
+    },
+    step: 0.1,
+    start: 1,
+  },
+  MARVIN: {
+    range: {
+      min: 0,
+      max: 100,
+    },
+    step: 1,
+    start: 100,
+  },
+  PHOBOS: {
+    range: {
+      min: 0,
+      max: 3,
+    },
+    step: 0.1,
+    start: 3,
+  },
+  HEAT: {
+    range: {
+      min: 1,
+      max: 3,
+    },
+    step: 0.1,
+    start: 3,
+  }
+};
+
 const SubmitButtonText = {
   IDLE: 'Опубликовать',
   SENDING: 'Публикую...',
@@ -40,5 +83,6 @@ export {
   ALERT_MESSAGE_CATCH,
   RANDOM_PHOTOS_VALUE,
   RENDER_DELAY,
-  SubmitButtonText
+  SubmitButtonText,
+  EffectsOptions
 };

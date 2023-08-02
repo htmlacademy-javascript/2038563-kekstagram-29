@@ -1,6 +1,6 @@
 import {renderThumbnails} from './thumbnail.js';
 import {RANDOM_PHOTOS_VALUE, RENDER_DELAY} from './constants.js';
-import {debounce} from './util.js';
+import {removeChatter} from './util.js';
 
 const filterElement = document.querySelector('.img-filters');
 const showFilters = () => {};
@@ -22,7 +22,7 @@ const setFilters = (photos) => {
   showFilters();
   renderThumbnails(photos);
 
-  filterElement.addEventListener('click', debounce((evt) => {
+  filterElement.addEventListener('click', removeChatter((evt) => {
     if (evt.target.classList.contains('img-filters__button')) {
       const id = evt.target.id;
       renderThumbnails(filterPhotos(id, photos));

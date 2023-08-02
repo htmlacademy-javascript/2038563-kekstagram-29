@@ -9,7 +9,7 @@ const popupTemplates = {
   error: errorTemplate
 };
 
-const closePopup = () => {
+const onClosePopup = () => {
   if (document.querySelector('.popup').classList.contains('error')) {
     document.addEventListener('keydown', onClickEsc);
   }
@@ -23,7 +23,7 @@ const showPopup = (popupType) => {
   popupElement.addEventListener('click', onClickOutside);
   document.body.append(popupElement);
   const popupButton = document.querySelector(`.${popupType}__button`);
-  popupButton.addEventListener('click', closePopup);
+  popupButton.addEventListener('click', onClosePopup);
   document.addEventListener('keydown', onEscapePopup);
   if(popupType === 'error') {
     document.removeEventListener('keydown', onClickEsc);
@@ -32,13 +32,13 @@ const showPopup = (popupType) => {
 
 function onEscapePopup() {
   if (isEscapeKey) {
-    closePopup();
+    onClosePopup();
   }
 }
 
 function onClickOutside(evt) {
   if (evt.target.classList.contains('success') || evt.target.classList.contains('error')) {
-    closePopup();
+    onClosePopup();
   }
 }
 
