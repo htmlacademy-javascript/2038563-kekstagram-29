@@ -55,7 +55,7 @@ radioList.addEventListener('change', (evt) => {
       image.style.filter = '';
     } else {
       updateSliderOption (evt.target.value);
-      renderEffect(evt.currentTarget.value);
+      renderEffect(evt.target.value);
       sliderBlock.classList.remove('hidden');
     }
   }

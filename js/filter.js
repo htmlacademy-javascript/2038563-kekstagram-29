@@ -3,8 +3,9 @@ import {RANDOM_PHOTOS_VALUE, RENDER_DELAY} from './constants.js';
 import {removeChatter} from './util.js';
 
 const filterElement = document.querySelector('.img-filters');
-const showFilters = () => {};
-filterElement.classList.remove('img-filters--inactive');
+const showFilters = () => {
+  filterElement.classList.remove('img-filters--inactive');
+};
 
 const setFilterButton = (filterButton) => {
   document.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');

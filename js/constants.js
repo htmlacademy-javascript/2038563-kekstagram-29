@@ -20,7 +20,7 @@ const RANDOM_PHOTOS_VALUE = 10;
 const RENDER_DELAY = 500;
 
 const EffectsOptions = {
-  CROME: {
+  CHROME: {
     range: {
       min: 0,
       max: 1,
