@@ -1,10 +1,11 @@
 import {renderThumbnails} from './thumbnail.js';
 import {RANDOM_PHOTOS_VALUE, RENDER_DELAY} from './constants.js';
-import {debounce} from './util.js';
+import {removeChatter} from './util.js';
 
 const filterElement = document.querySelector('.img-filters');
-const showFilters = () => {};
-filterElement.classList.remove('img-filters--inactive');
+const showFilters = () => {
+  filterElement.classList.remove('img-filters--inactive');
+};
 
 const setFilterButton = (filterButton) => {
   document.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
@@ -22,7 +23,7 @@ const setFilters = (photos) => {
   showFilters();
   renderThumbnails(photos);
 
-  filterElement.addEventListener('click', debounce((evt) => {
+  filterElement.addEventListener('click', removeChatter((evt) => {
     if (evt.target.classList.contains('img-filters__button')) {
       const id = evt.target.id;
       renderThumbnails(filterPhotos(id, photos));

@@ -27,21 +27,21 @@ const renderScale = () => {
   }
 };
 
-const onMinusClick = () => {
+const clickOnMinus = () => {
   scale = scale - SCALE_STEP >= MIN_SCALE ?
     scale - SCALE_STEP : MIN_SCALE;
   // добавить disabled при минимальном размере scale
   renderScale();
 };
-const onPlusClick = () => {
+const clickOnPlus = () => {
   scale = scale + SCALE_STEP <= MAX_SCALE ?
     scale + SCALE_STEP : MAX_SCALE;
   // добавить disabled при минимальном размере scale
   renderScale();
 };
 
-minus.addEventListener('click', onMinusClick);
-plus.addEventListener('click', onPlusClick);
+minus.addEventListener('click', clickOnMinus);
+plus.addEventListener('click', clickOnPlus);
 
 
 const resetScale = () => {

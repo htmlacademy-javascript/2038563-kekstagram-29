@@ -14,9 +14,7 @@ const clearContainer = () => {
 const renderThumbnails = (pictures) => {
   clearContainer();
   pictures.forEach((element) => {
-
     const pictureElement = pictureTemplate.cloneNode(true);
-
     pictureElement.dataset.id = element.id;
     pictureElement.querySelector('.picture__img').src = element.url;
     pictureElement.querySelector('.picture__img').alt = element.description;

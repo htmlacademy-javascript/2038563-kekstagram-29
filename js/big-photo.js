@@ -15,11 +15,11 @@ const commentsInBigPhotoCount = bigPhoto.querySelector('.social__comment-count')
 
 const commentsLoader = bigPhoto.querySelector('.social__comments-loader');
 
-const commentsList = [];
+const comments = [];
 let commentsVolume = 0;
 
 const renderButtonLoader = () => {
-  if (!commentsList.length) {
+  if (!comments.length) {
     commentsLoader.classList.add('hidden');
   } else {
     commentsLoader.classList.remove('hidden');
@@ -27,7 +27,7 @@ const renderButtonLoader = () => {
 };
 
 const renderStatistic = () => {
-  commentsInBigPhotoCount.innerHTML = `${commentsVolume - commentsList.length} из <span class="comments-count">${commentsVolume}</span> комментариев`;
+  commentsInBigPhotoCount.innerHTML = `${commentsVolume - comments.length} из <span class="comments-count">${commentsVolume}</span> комментариев`;
 };
 
 const renderOneComment = (item) => {
@@ -40,7 +40,7 @@ const renderOneComment = (item) => {
 
 const renderCommentsInBIgPhoto = () => {
   const fragment = document.createDocumentFragment();
-  commentsList.splice(0, COMMENTS_DOSE).forEach((e) => {
+  comments.splice(0, COMMENTS_DOSE).forEach((e) => {
     fragment.append(renderOneComment(e));
   });
 
@@ -58,8 +58,8 @@ const openBigPhoto = (elem) => {
   likesInBigPhoto.textContent = elem.likes;
   titleInBigPhoto.textContent = elem.description;
 
-  commentsList.length = 0;
-  commentsList.push(...elem.comments.slice());
+  comments.length = 0;
+  comments.push(...elem.comments.slice());
 
   renderCommentsInBIgPhoto(elem.comments);
   document.addEventListener('keydown', onClickOutside);
